@@ -1,0 +1,101 @@
+ul li{
+    list-style: none;
+    margin: 0.5em 0 0.5em 0;
+}
+
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+
+table {
+    margin-top:10px;
+    border-collapse: collapse;
+}
+table th{
+    color:rgb(46, 110, 158);
+    background-color:rgb(223, 239, 252);
+}
+table th,table td {
+    text-align: center;
+    border: 1px solid rgb(166, 201, 226);
+    padding: 5px 10px;
+}
+table .width200{
+    width:200px;
+}
+.width600{
+    width:600px;
+}
+
+#myform{
+    width: 305px;
+    /*
+    height:280px;
+    */
+    border:1px solid rgb(166, 201, 226);
+    padding:2px;
+    margin: 10px auto;
+}
+#myform #titlebar{
+    color:rgb(46, 110, 158);
+    border:1px solid rgb(197, 219, 236);
+    background-color:rgb(223, 239, 252);
+    padding: 10px;
+    font-weight:bold;
+    text-align:left;
+}
+#myform #bjdform{
+    padding:10px;
+}
+#bjdform .validateTips {
+    font-size:80%;
+    border: 1px solid transparent;
+    padding: 0.3em;
+}
+#bjdform fieldset {
+    padding: 0;
+    border: 0;
+    margin-top: 10px;
+}
+#bjdform lable,#bjdform input,#bjdform select{
+    display:block;
+}
+
+#bjdform .text {
+    margin-bottom: 12px;
+    width: 95%;
+    padding: .4em;
+    border:1px solid rgb(197, 219, 236);
+}
+#bjdform .select{
+    width:99%;
+}
+#tip{
+    width:300px;
+    border: 1px solid #aaa;
+    padding: 0.3em;
+    margin:10px auto;
+}
+
+.hide{
+    display: none;
+}
+
+.button{
+    width: 180px;
+}
+
+.btn{
+}
+
+.center{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fr{
+    float: right;
+}

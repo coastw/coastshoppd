@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+        <script type="text/javascript" src="js/readnumber.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $("#button").click(function() {
+                    readnum($("#num").val(),$("#mp3number")[0]);
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div>
+            <audio id="mp3number" src="audio/number.mp3" preload>
+                HTML5 audio not supported
+            </audio>
+            <input type="text" name="num" id="num" />
+            <button id="button">try</button>
+        </div>
+        <div id="show"></div>
+    </body>
+</html>

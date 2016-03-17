@@ -1,0 +1,38 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>片断 | ShowUser</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                //alert("Json Test");
+                $("a").on("click", function(event) {
+                    var show = $("#data").find("ul");
+                    event.preventDefault();
+                    $.get("ajax.do", {method: "getusers", keyword: $("#keyword").val()}, function(data) {
+                        show.empty();
+                        var users = eval(data);
+                        $.each(users, function(i) {
+                            show.append("<li>" + users[i].name + "--"+ users[i].privilege +"</li>");
+                        });
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h3>查询用户</h3>
+        <div>
+            <input id="keyword" type="text" />
+            <a href="#">查询</a>
+            <div id="data">
+                <ul></ul>
+            </div>
+        </div>
+    </body>
+</html>
