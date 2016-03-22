@@ -117,7 +117,7 @@ public class Out2SapServlet extends HttpServlet {
                     cell = wb.getSheetAt(0).getRow(row).getCell(2);   //danwei
                     cell.setCellValue("件");
                     cell = wb.getSheetAt(0).getRow(row).getCell(3);   //color
-                    cell.setCellValue(info.getColorType()+info.getColor());
+                    cell.setCellValue(info.getColorType()+info.getOriginColor());
                     cell = wb.getSheetAt(0).getRow(row).getCell(4);   //colorType
                     cell.setCellValue(info.getColorType());
                     cell = wb.getSheetAt(0).getRow(row).getCell(5);   //first
@@ -128,19 +128,12 @@ public class Out2SapServlet extends HttpServlet {
                     cell.setCellValue(info.getThirdType());
                     cell = wb.getSheetAt(0).getRow(row).getCell(11);  //wSize
                     cell.setCellValue(info.getLocalSize() + "(" +info.getWorldSize() + ")");
-//                    cell = wb.getSheetAt(0).getRow(row).getCell(12);  //size
-//                    cell.setCellValue(info.getSize());
-//                    cell = wb.getSheetAt(0).getRow(row).getCell(13);  //localsize
-//                    cell.setCellValue(info.getLocalSize());
                     cell = wb.getSheetAt(0).getRow(row).getCell(14);  //season
                     cell.setCellValue(info.getFitSeason());
                     cell = wb.getSheetAt(0).getRow(row).getCell(15);  //year
                     cell.setCellValue(info.getYear() + "年");
                     cell = wb.getSheetAt(0).getRow(row).getCell(16);  //attribute
                     cell.setCellValue("无");
-//                    cell = wb.getSheetAt(0).getRow(row).getCell(19);  //amount
-//                    cell.setCellValue(info.getAmount());
-                    //price
                     cell = wb.getSheetAt(0).getRow(row).getCell(20);  //price
                     cell.setCellValue(Integer.toString(info.getPrice()));
                     //21 now price

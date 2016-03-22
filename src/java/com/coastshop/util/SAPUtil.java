@@ -64,7 +64,7 @@ public class SAPUtil {
                 cell = currentRow.getCell(2);   //danwei
                 cell.setCellValue("件");
                 cell = currentRow.getCell(3);   //color
-                cell.setCellValue(info.getColorType() + info.getColor());
+                cell.setCellValue(info.getOriginColor());
                 cell = currentRow.getCell(4);   //colorType
                 cell.setCellValue(info.getColorType());
                 cell = currentRow.getCell(5);   //first

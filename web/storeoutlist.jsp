@@ -72,7 +72,7 @@
                     <td>${status.count}</td>
                     <td>${sopi.sn}</td>
                     <td>${sopi.color}</td>
-                    <td>${sopi.colorType}</td>
+                    <td>${sopi.originColor}</td>
                     <td>${sopi.localSize}</td>
                     <td>${sopi.price}</td>
                     <td class="amount">${sopi.amount}</td>

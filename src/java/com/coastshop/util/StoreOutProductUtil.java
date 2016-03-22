@@ -43,6 +43,7 @@ public class StoreOutProductUtil extends ProductUtil {
             soInfo.setPrice(price);
             soInfo.setAmount(amount);
             soInfo.setBrand(brand);
+            soInfo.setOriginColor(productInfo.getOriginColor());
         }else{
             soInfo.setId(storeoutid);
             soInfo.setSn(sn);

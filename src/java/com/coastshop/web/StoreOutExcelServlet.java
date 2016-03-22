@@ -115,7 +115,7 @@ public class StoreOutExcelServlet extends HttpServlet {
                     List<String> values = new ArrayList<String>();
                     values.add(info.getSn());
                     values.add(info.getColor());
-                    values.add(info.getColorType());
+                    values.add(info.getOriginColor());
                     values.add(info.getLocalSize());
                     values.add(Integer.toString(info.getAmount()));
                     values.add(Integer.toString(info.getPrice()));

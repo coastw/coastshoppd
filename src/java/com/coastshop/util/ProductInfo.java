@@ -23,6 +23,7 @@ public class ProductInfo {
     private String colorType;
     private String localSize;
     private String worldSize;
+    private String originColor;
 
     public ProductInfo() {
         this.sn = "#";
@@ -38,6 +39,7 @@ public class ProductInfo {
         this.colorType = "#";
         this.localSize = "#";
         this.worldSize = "#";
+        this.originColor = "#";
     }
     
     
@@ -222,6 +224,20 @@ public class ProductInfo {
      */
     public void setLocalSize(String localSize) {
         this.localSize = localSize;
+    }
+
+    /**
+     * @return the originColor
+     */
+    public String getOriginColor() {
+        return originColor;
+    }
+
+    /**
+     * @param originColor the originColor to set
+     */
+    public void setOriginColor(String originColor) {
+        this.originColor = originColor;
     }
 
     

@@ -129,7 +129,7 @@ public class ShopinServlet extends HttpServlet {
                             cell = currentRow.getCell(2);   //danwei
                             cell.setCellValue("件");
                             cell = currentRow.getCell(3);   //color
-                            cell.setCellValue(so.getColor());
+                            cell.setCellValue(so.getOriginColor());
                             cell = currentRow.getCell(4);   //colorType
                             cell.setCellValue(so.getColorType());
                             cell = currentRow.getCell(5);   //first
@@ -139,15 +139,11 @@ public class ShopinServlet extends HttpServlet {
                             cell = currentRow.getCell(7);   //third
                             cell.setCellValue(so.getThirdType());
                             cell = currentRow.getCell(11);  //wSize
-                            cell.setCellValue(so.getWorldSize());
-                            cell = currentRow.getCell(12);  //size1
-                            cell.setCellValue(so.getSize());
-                            cell = currentRow.getCell(13);  //localsize
-                            cell.setCellValue(so.getLocalSize());
+                            cell.setCellValue(so.getLocalSize() + "(" + so.getWorldSize() + ")");
                             cell = currentRow.getCell(14);  //season
                             cell.setCellValue(so.getFitSeason());
                             cell = currentRow.getCell(15);  //year
-                            cell.setCellValue(so.getYear());
+                            cell.setCellValue(so.getYear() + "年");
                             cell = currentRow.getCell(16);  //attribute
                             cell.setCellValue("无");
                             cell = currentRow.getCell(20);  //price
@@ -159,8 +155,17 @@ public class ShopinServlet extends HttpServlet {
                             if (persent.equals("1000%")) {
                                 cell.setCellValue("###");
                             } else {
-                                String formula = "INT(U" + (row + 1) + "*" + persent + ")";
-                                cell.setCellFormula(formula);
+//                        String formula = "INT(U" + (row + 1) + "*" + persent + ")";
+//                        cell.setCellFormula(formula);
+                                cell.setCellValue((int) (so.getPrice() * DiscountUtil.percent2double(persent)));
+                            }
+                            cell = wb.getSheetAt(0).getRow(row).createCell(22);
+                            if (cell != null) {
+                                cell.setCellValue(persent);
+                            }
+                            cell = wb.getSheetAt(0).getRow(row).createCell(23);
+                            if (cell != null) {
+                                cell.setCellValue((double) so.getAmount());
                             }
                             //next row
                             row++;
