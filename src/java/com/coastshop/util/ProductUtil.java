@@ -228,7 +228,8 @@ public class ProductUtil {
                 || typeCode.equals("025")) {
             thirdType = "连衣裙";
         } else if (typeCode.equals("061") || typeCode.equals("062")
-                || typeCode.equals("063") || typeCode.equals("064")) {
+                || typeCode.equals("063") || typeCode.equals("064")
+                || typeCode.equals("065")) {
             thirdType = "T恤";
         } else if (typeCode.equals("081") || typeCode.equals("082")) {
             thirdType = "衬衣";
@@ -418,6 +419,16 @@ public class ProductUtil {
             originColor = "娥黄";
         } else if (color.equals("08088")) {
             originColor = "姜黄";
+        } else if (color.equals("01012")) {
+            originColor = "草绿";
+        } else if (color.equals("09106")) {
+            originColor = "裸粉";
+        } else if (color.equals("12002")) {
+            originColor = "柳黄花";
+        } else if (color.equals("13015")) {
+            originColor = "豆绿条";
+        } else if (color.equals("11075")) {
+            originColor = "玫红格";
         } else {
             originColor = color;
         }
@@ -434,7 +445,7 @@ public class ProductUtil {
             colorType = "桔色";
         } else if (color.equals("08087")) {
             colorType = "棕色";
-        } else if (color.equals("09100")) {
+        } else if (color.equals("09106") || color.equals("09100")) {
             colorType = "粉色";
         } else if (color.equals("10115") || color.equals("12115") || color.equals("13115")) {
             colorType = "黑色";
@@ -500,8 +511,7 @@ public class ProductUtil {
                 worldSize = "#";
             }
         } else //shangyi
-        {
-            if (size.equals("1")) {
+         if (size.equals("1")) {
                 worldSize = "155/80A";
             } else if (size.equals("2")) {
                 worldSize = "160/84A";
@@ -514,7 +524,6 @@ public class ProductUtil {
             } else {
                 worldSize = "#";
             }
-        }
 
         return worldSize;
     }
