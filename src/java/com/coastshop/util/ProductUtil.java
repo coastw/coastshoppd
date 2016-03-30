@@ -88,26 +88,37 @@ public class ProductUtil {
     public static String getYear(String sn) {
         String year;
         String yearCode = sn.substring(0, 1);
-        if (yearCode.equals("1")) {
-            year = "2011";
-        } else if (yearCode.equals("2")) {
-            year = "2012";
-        } else if (yearCode.equals("3")) {
-            year = "2013";
-        } else if (yearCode.equals("4")) {
-            year = "2014";
-        } else if (yearCode.equals("5")) {
-            year = "2015";
-        } else if (yearCode.equals("6")) {
-            year = "2016";
-        } else if (yearCode.equals("7")) {
-            year = "2017";
-        } else if (yearCode.equals("8")) {
-            year = "2018";
-        } else if (yearCode.equals("9")) {
-            year = "2019";
-        } else {
-            year = "#" + yearCode;
+        switch (yearCode) {
+            case "1":
+                year = "2011";
+                break;
+            case "2":
+                year = "2012";
+                break;
+            case "3":
+                year = "2013";
+                break;
+            case "4":
+                year = "2014";
+                break;
+            case "5":
+                year = "2015";
+                break;
+            case "6":
+                year = "2016";
+                break;
+            case "7":
+                year = "2017";
+                break;
+            case "8":
+                year = "2018";
+                break;
+            case "9":
+                year = "2019";
+                break;
+            default:
+                year = "#" + yearCode;
+                break;
         }
         return year;
     }
@@ -115,16 +126,22 @@ public class ProductUtil {
     public static String getSeason(String sn) {
         String season;
         String seasonCode = sn.substring(1, 2);
-        if (seasonCode.equals("1")) {
-            season = "春";
-        } else if (seasonCode.equals("2")) {
-            season = "夏";
-        } else if (seasonCode.equals("3")) {
-            season = "秋";
-        } else if (seasonCode.equals("4")) {
-            season = "冬";
-        } else {
-            season = "#" + seasonCode;
+        switch (seasonCode) {
+            case "1":
+                season = "春";
+                break;
+            case "2":
+                season = "夏";
+                break;
+            case "3":
+                season = "秋";
+                break;
+            case "4":
+                season = "冬";
+                break;
+            default:
+                season = "#" + seasonCode;
+                break;
         }
         return season;
     }
@@ -152,34 +169,49 @@ public class ProductUtil {
         String type;
         String typeCode;
         typeCode = sn.substring(3, 5);
-        if (typeCode.equals("01")) {
-            type = "外套";
-        } else if (typeCode.equals("02")) {
-            type = "连衣裙";
-        } else if (typeCode.equals("03")) {
-            type = "裤子";
-        } else if (typeCode.equals("04")) {
-            type = "半裙";
-        } else if (typeCode.equals("05")) {
-            type = "风衣";
-        } else if (typeCode.equals("06")) {
-            type = "T恤";
-        } else if (typeCode.equals("07")) {
-            type = "毛衫";
-        } else if (typeCode.equals("08")) {
-            type = "衬衫";
-        } else if (typeCode.equals("09")) {
-            type = "羽绒";
-        } else if (typeCode.equals("11")) {
-            type = "大衣";
-        } else if (typeCode.equals("13")) {
-            type = "棉衣";
-        } else if (typeCode.equals("14")) {
-            type = "皮草";
-        } else if (typeCode.equals("15")) {
-            type = "饰品";
-        } else {
-            type = "#" + typeCode;
+        switch (typeCode) {
+            case "01":
+                type = "外套";
+                break;
+            case "02":
+                type = "连衣裙";
+                break;
+            case "03":
+                type = "裤子";
+                break;
+            case "04":
+                type = "半裙";
+                break;
+            case "05":
+                type = "风衣";
+                break;
+            case "06":
+                type = "T恤";
+                break;
+            case "07":
+                type = "毛衫";
+                break;
+            case "08":
+                type = "衬衫";
+                break;
+            case "09":
+                type = "羽绒";
+                break;
+            case "11":
+                type = "大衣";
+                break;
+            case "13":
+                type = "棉衣";
+                break;
+            case "14":
+                type = "皮草";
+                break;
+            case "15":
+                type = "饰品";
+                break;
+            default:
+                type = "#" + typeCode;
+                break;
         }
         return type;
     }
@@ -192,16 +224,28 @@ public class ProductUtil {
         String secondType;
         String typeCode;
         typeCode = sn.substring(3, 5);
-        if (typeCode.equals("01") || typeCode.equals("05") || typeCode.equals("06")
-                || typeCode.equals("07") || typeCode.equals("08") || typeCode.equals("09")
-                || typeCode.equals("11") || typeCode.equals("13") || typeCode.equals("14")) {
-            secondType = "女装上装";
-        } else if (typeCode.equals("03")) {
-            secondType = "女装裤子";
-        } else if (typeCode.equals("02") || typeCode.equals("04")) {
-            secondType = "裙装";
-        } else {
-            secondType = "#" + typeCode;
+        switch (typeCode) {
+            case "01":
+            case "05":
+            case "06":
+            case "07":
+            case "08":
+            case "09":
+            case "11":
+            case "13":
+            case "14":
+                secondType = "女装上装";
+                break;
+            case "03":
+                secondType = "女装裤子";
+                break;
+            case "02":
+            case "04":
+                secondType = "裙装";
+                break;
+            default:
+                secondType = "#" + typeCode;
+                break;
         }
         return secondType;
 
@@ -211,49 +255,81 @@ public class ProductUtil {
         String thirdType;
         String typeCode;
         typeCode = sn.substring(3, 6);
-        if (typeCode.equals("037")) {
-            thirdType = "打底裤";
-        } else if (typeCode.equals("031")) {
-            thirdType = "短裤";
-        } else if (typeCode.equals("032") || typeCode.equals("034")
-                || typeCode.equals("035") || typeCode.equals("036")) {
-            thirdType = "休闲裤";
-        } else if (typeCode.equals("033")) {
-            thirdType = "长裤";
-        } else if (typeCode.equals("041") || typeCode.equals("042")
-                || typeCode.equals("043")) {
-            thirdType = "半身裙";
-        } else if (typeCode.equals("021") || typeCode.equals("022")
-                || typeCode.equals("023") || typeCode.equals("024")
-                || typeCode.equals("025")) {
-            thirdType = "连衣裙";
-        } else if (typeCode.equals("061") || typeCode.equals("062")
-                || typeCode.equals("063") || typeCode.equals("064")
-                || typeCode.equals("065")) {
-            thirdType = "T恤";
-        } else if (typeCode.equals("081") || typeCode.equals("082")) {
-            thirdType = "衬衣";
-        } else if (typeCode.equals("111") || typeCode.equals("112")
-                || typeCode.equals("113")) {
-            thirdType = "大衣";
-        } else if (typeCode.equals("051") || typeCode.equals("052")) {
-            thirdType = "风衣";
-        } else if (typeCode.equals("071") || typeCode.equals("072")
-                || typeCode.equals("073") || typeCode.equals("074")) {
-            thirdType = "毛衣/针织衫";
-        } else if (typeCode.equals("131") || typeCode.equals("132")
-                || typeCode.equals("133")) {
-            thirdType = "棉衣/棉服";
-        } else if (typeCode.equals("011") || typeCode.equals("012")
-                || typeCode.equals("013")) {
-            thirdType = "外套";
-        } else if (typeCode.equals("091") || typeCode.equals("092")
-                || typeCode.equals("093")) {
-            thirdType = "羽绒服";
-        } else if (typeCode.equals("141")) {
-            thirdType = "中款皮草";
-        } else {
-            thirdType = "#" + typeCode;
+        switch (typeCode) {
+            case "037":
+                thirdType = "打底裤";
+                break;
+            case "031":
+                thirdType = "短裤";
+                break;
+            case "032":
+            case "034":
+            case "035":
+            case "036":
+                thirdType = "休闲裤";
+                break;
+            case "033":
+                thirdType = "长裤";
+                break;
+            case "041":
+            case "042":
+            case "043":
+                thirdType = "半身裙";
+                break;
+            case "021":
+            case "022":
+            case "023":
+            case "024":
+            case "025":
+                thirdType = "连衣裙";
+                break;
+            case "061":
+            case "062":
+            case "063":
+            case "064":
+            case "065":
+                thirdType = "T恤";
+                break;
+            case "081":
+            case "082":
+                thirdType = "衬衣";
+                break;
+            case "111":
+            case "112":
+            case "113":
+                thirdType = "大衣";
+                break;
+            case "051":
+            case "052":
+                thirdType = "风衣";
+                break;
+            case "071":
+            case "072":
+            case "073":
+            case "074":
+                thirdType = "毛衣/针织衫";
+                break;
+            case "131":
+            case "132":
+            case "133":
+                thirdType = "棉衣/棉服";
+                break;
+            case "011":
+            case "012":
+            case "013":
+                thirdType = "外套";
+                break;
+            case "091":
+            case "092":
+            case "093":
+                thirdType = "羽绒服";
+                break;
+            case "141":
+                thirdType = "中款皮草";
+                break;
+            default:
+                thirdType = "#" + typeCode;
+                break;
         }
         return thirdType;
     }
@@ -261,12 +337,18 @@ public class ProductUtil {
     public static String getFitSeason(String sn) {
         String fitSeason;
         String ss = sn.substring(1, 2);
-        if (ss.equals("1") || ss.equals("2")) {
-            fitSeason = "春/夏FP01";
-        } else if (ss.equals("3") || ss.equals("4")) {
-            fitSeason = "秋/冬FP02";
-        } else {
-            fitSeason = "无FP00";
+        switch (ss) {
+            case "1":
+            case "2":
+                fitSeason = "春/夏FP01";
+                break;
+            case "3":
+            case "4":
+                fitSeason = "秋/冬FP02";
+                break;
+            default:
+                fitSeason = "无FP00";
+                break;
         }
         return fitSeason;
     }
@@ -275,162 +357,241 @@ public class ProductUtil {
     //TODO 读取配置文件
     public static String getOriginColor(String color) {
         String originColor;
-        if (color.equals("01002")) {
-            originColor = "柳黄";
-        } else if (color.equals("01003")) {
-            originColor = "柳绿";
-        } else if (color.equals("01004")) {
-            originColor = "军绿";
-        } else if (color.equals("01009")) {
-            originColor = "植物绿";
-        } else if (color.equals("01014")) {
-            originColor = "绿色";
-        } else if (color.equals("01015")) {
-            originColor = "豆绿";
-        } else if (color.equals("03036")) {
-            originColor = "天蓝";
-        } else if (color.equals("03038")) {
-            originColor = "靛蓝";
-        } else if (color.equals("03041")) {
-            originColor = "宝蓝";
-        } else if (color.equals("03042")) {
-            originColor = "牛仔蓝";
-        } else if (color.equals("03043")) {
-            originColor = "藏青";
-        } else if (color.equals("03050")) {
-            originColor = "水蓝";
-        } else if (color.equals("03052")) {
-            originColor = "湖蓝";
-        } else if (color.equals("04064")) {
-            originColor = "藕色";
-        } else if (color.equals("05070")) {
-            originColor = "咖色";
-        } else if (color.equals("05072")) {
-            originColor = "西瓜红";
-        } else if (color.equals("06076")) {
-            originColor = "红色";
-        } else if (color.equals("07080")) {
-            originColor = "桔色";
-        } else if (color.equals("07082")) {
-            originColor = "亮黄";
-        } else if (color.equals("07085")) {
-            originColor = "土黄";
-        } else if (color.equals("08087")) {
-            originColor = "卡其";
-        } else if (color.equals("08090")) {
-            originColor = "灰色";
-        } else if (color.equals("08091")) {
-            originColor = "墨灰";
-        } else if (color.equals("08093")) {
-            originColor = "浅灰";
-        } else if (color.equals("08095")) {
-            originColor = "深灰";
-        } else if (color.equals("09099")) {
-            originColor = "米色";
-        } else if (color.equals("09101")) {
-            originColor = "粉桔";
-        } else if (color.equals("09103")) {
-            originColor = "象牙白";
-        } else if (color.equals("10115")) {
-            originColor = "黑色";
-        } else if (color.equals("10900")) {
-            originColor = "红色格";
-        } else if (color.equals("11004")) {
-            originColor = "军绿格";
-        } else if (color.equals("11009")) {
-            originColor = "植物绿格";
-        } else if (color.equals("11015")) {
-            originColor = "豆绿格";
-        } else if (color.equals("11036")) {
-            originColor = "天蓝格";
-        } else if (color.equals("11037")) {
-            originColor = "靛青格";
-        } else if (color.equals("11038")) {
-            originColor = "靛蓝格";
-        } else if (color.equals("11041")) {
-            originColor = "宝蓝格";
-        } else if (color.equals("11043")) {
-            originColor = "藏青格";
-        } else if (color.equals("11050")) {
-            originColor = "水蓝格";
-        } else if (color.equals("11052")) {
-            originColor = "湖蓝格";
-        } else if (color.equals("11076")) {
-            originColor = "红色格";
-        } else if (color.equals("11080")) {
-            originColor = "桔色格";
-        } else if (color.equals("11087")) {
-            originColor = "卡其格";
-        } else if (color.equals("12003")) {
-            originColor = "柳绿花";
-        } else if (color.equals("12004")) {
-            originColor = "军绿花";
-        } else if (color.equals("12009")) {
-            originColor = "植物绿花";
-        } else if (color.equals("12015")) {
-            originColor = "豆绿花";
-        } else if (color.equals("12036")) {
-            originColor = "天蓝花";
-        } else if (color.equals("12038")) {
-            originColor = "靛蓝花";
-        } else if (color.equals("12041")) {
-            originColor = "宝蓝花";
-        } else if (color.equals("12043")) {
-            originColor = "藏青花";
-        } else if (color.equals("12050")) {
-            originColor = "水蓝花";
-        } else if (color.equals("12076")) {
-            originColor = "红色花";
-        } else if (color.equals("12080")) {
-            originColor = "桔色花";
-        } else if (color.equals("12099")) {
-            originColor = "米色花";
-        } else if (color.equals("12115")) {
-            originColor = "黑色花";
-        } else if (color.equals("13014")) {
-            originColor = "绿色条";
-        } else if (color.equals("13043")) {
-            originColor = "藏青条";
-        } else if (color.equals("13080")) {
-            originColor = "桔色条";
-        } else if (color.equals("13087")) {
-            originColor = "卡其条";
-        } else if (color.equals("13115")) {
-            originColor = "黑色条";
-        } else if (color.equals("09097")) {
-            originColor = "米白";
-        } else if (color.equals("09100")) {
-            originColor = "蜡粉";
-        } else if (color.equals("12101")) {
-            originColor = "粉桔花";
-        } else if (color.equals("06079")) {
-            originColor = "酒红";
-        } else if (color.equals("13095")) {
-            originColor = "灰色条";
-        } else if (color.equals("11115")) {
-            originColor = "黑色格";
-        } else if (color.equals("04066")) {
-            originColor = "桃红";
-        } else if (color.equals("07083")) {
-            originColor = "黄色";
-        } else if (color.equals("13083")) {
-            originColor = "黄色条";
-        } else if (color.equals("07081")) {
-            originColor = "娥黄";
-        } else if (color.equals("08088")) {
-            originColor = "姜黄";
-        } else if (color.equals("01012")) {
-            originColor = "草绿";
-        } else if (color.equals("09106")) {
-            originColor = "裸粉";
-        } else if (color.equals("12002")) {
-            originColor = "柳黄花";
-        } else if (color.equals("13015")) {
-            originColor = "豆绿条";
-        } else if (color.equals("11075")) {
-            originColor = "玫红格";
-        } else {
-            originColor = color;
+        switch (color) {
+            case "01002":
+                originColor = "柳黄";
+                break;
+            case "01003":
+                originColor = "柳绿";
+                break;
+            case "01004":
+                originColor = "军绿";
+                break;
+            case "01009":
+                originColor = "植物绿";
+                break;
+            case "01014":
+                originColor = "绿色";
+                break;
+            case "01015":
+                originColor = "豆绿";
+                break;
+            case "03036":
+                originColor = "天蓝";
+                break;
+            case "03038":
+                originColor = "靛蓝";
+                break;
+            case "03041":
+                originColor = "宝蓝";
+                break;
+            case "03042":
+                originColor = "牛仔蓝";
+                break;
+            case "03043":
+                originColor = "藏青";
+                break;
+            case "03050":
+                originColor = "水蓝";
+                break;
+            case "03052":
+                originColor = "湖蓝";
+                break;
+            case "04064":
+                originColor = "藕色";
+                break;
+            case "05070":
+                originColor = "咖色";
+                break;
+            case "05072":
+                originColor = "西瓜红";
+                break;
+            case "06076":
+                originColor = "红色";
+                break;
+            case "07080":
+                originColor = "桔色";
+                break;
+            case "07082":
+                originColor = "亮黄";
+                break;
+            case "07085":
+                originColor = "土黄";
+                break;
+            case "08087":
+                originColor = "卡其";
+                break;
+            case "08090":
+                originColor = "灰色";
+                break;
+            case "08091":
+                originColor = "墨灰";
+                break;
+            case "08093":
+                originColor = "浅灰";
+                break;
+            case "08095":
+                originColor = "深灰";
+                break;
+            case "09099":
+                originColor = "米色";
+                break;
+            case "09101":
+                originColor = "粉桔";
+                break;
+            case "09103":
+                originColor = "象牙白";
+                break;
+            case "10115":
+                originColor = "黑色";
+                break;
+            case "10900":
+                originColor = "红色格";
+                break;
+            case "11004":
+                originColor = "军绿格";
+                break;
+            case "11009":
+                originColor = "植物绿格";
+                break;
+            case "11015":
+                originColor = "豆绿格";
+                break;
+            case "11036":
+                originColor = "天蓝格";
+                break;
+            case "11037":
+                originColor = "靛青格";
+                break;
+            case "11038":
+                originColor = "靛蓝格";
+                break;
+            case "11041":
+                originColor = "宝蓝格";
+                break;
+            case "11043":
+                originColor = "藏青格";
+                break;
+            case "11050":
+                originColor = "水蓝格";
+                break;
+            case "11052":
+                originColor = "湖蓝格";
+                break;
+            case "11076":
+                originColor = "红色格";
+                break;
+            case "11080":
+                originColor = "桔色格";
+                break;
+            case "11087":
+                originColor = "卡其格";
+                break;
+            case "12003":
+                originColor = "柳绿花";
+                break;
+            case "12004":
+                originColor = "军绿花";
+                break;
+            case "12009":
+                originColor = "植物绿花";
+                break;
+            case "12015":
+                originColor = "豆绿花";
+                break;
+            case "12036":
+                originColor = "天蓝花";
+                break;
+            case "12038":
+                originColor = "靛蓝花";
+                break;
+            case "12041":
+                originColor = "宝蓝花";
+                break;
+            case "12043":
+                originColor = "藏青花";
+                break;
+            case "12050":
+                originColor = "水蓝花";
+                break;
+            case "12076":
+                originColor = "红色花";
+                break;
+            case "12080":
+                originColor = "桔色花";
+                break;
+            case "12099":
+                originColor = "米色花";
+                break;
+            case "12115":
+                originColor = "黑色花";
+                break;
+            case "13014":
+                originColor = "绿色条";
+                break;
+            case "13043":
+                originColor = "藏青条";
+                break;
+            case "13080":
+                originColor = "桔色条";
+                break;
+            case "13087":
+                originColor = "卡其条";
+                break;
+            case "13115":
+                originColor = "黑色条";
+                break;
+            case "09097":
+                originColor = "米白";
+                break;
+            case "09100":
+                originColor = "蜡粉";
+                break;
+            case "12101":
+                originColor = "粉桔花";
+                break;
+            case "06079":
+                originColor = "酒红";
+                break;
+            case "13095":
+                originColor = "灰色条";
+                break;
+            case "11115":
+                originColor = "黑色格";
+                break;
+            case "04066":
+                originColor = "桃红";
+                break;
+            case "07083":
+                originColor = "黄色";
+                break;
+            case "13083":
+                originColor = "黄色条";
+                break;
+            case "07081":
+                originColor = "娥黄";
+                break;
+            case "08088":
+                originColor = "姜黄";
+                break;
+            case "01012":
+                originColor = "草绿";
+                break;
+            case "09106":
+                originColor = "裸粉";
+                break;
+            case "12002":
+                originColor = "柳黄花";
+                break;
+            case "13015":
+                originColor = "豆绿条";
+                break;
+            case "11075":
+                originColor = "玫红格";
+                break;
+            default:
+                originColor = color;
+                break;
         }
         return originColor;
     }
@@ -475,18 +636,25 @@ public class ProductUtil {
     public static String getLocalSize(String sn, String size) {
         String localSize;
 
-        if (size.equals("1")) {
-            localSize = "S";
-        } else if (size.equals("2")) {
-            localSize = "M";
-        } else if (size.equals("3")) {
-            localSize = "L";
-        } else if (size.equals("4")) {
-            localSize = "XL";
-        } else if (size.equals("5")) {
-            localSize = "XXL";
-        } else {
-            localSize = "#";
+        switch (size) {
+            case "1":
+                localSize = "S";
+                break;
+            case "2":
+                localSize = "M";
+                break;
+            case "3":
+                localSize = "L";
+                break;
+            case "4":
+                localSize = "XL";
+                break;
+            case "5":
+                localSize = "XXL";
+                break;
+            default:
+                localSize = "#";
+                break;
         }
 
         return localSize;
@@ -497,34 +665,49 @@ public class ProductUtil {
         String ts;//type string 判断上衣还是裤子
         ts = sn.substring(3, 5);
         if (ts.equals("03") || ts.equals("04")) {  //kuzi
-            if (size.equals("1")) {
-                worldSize = "155/60A";
-            } else if (size.equals("2")) {
-                worldSize = "160/64A";
-            } else if (size.equals("3")) {
-                worldSize = "165/68A";
-            } else if (size.equals("4")) {
-                worldSize = "170/72A";
-            } else if (size.equals("5")) {
-                worldSize = "175/76A";
-            } else {
-                worldSize = "#";
+            switch (size) {
+                case "1":
+                    worldSize = "155/60A";
+                    break;
+                case "2":
+                    worldSize = "160/64A";
+                    break;
+                case "3":
+                    worldSize = "165/68A";
+                    break;
+                case "4":
+                    worldSize = "170/72A";
+                    break;
+                case "5":
+                    worldSize = "175/76A";
+                    break;
+                default:
+                    worldSize = "#" + ts;
+                    break;
             }
         } else //shangyi
-         if (size.equals("1")) {
-                worldSize = "155/80A";
-            } else if (size.equals("2")) {
-                worldSize = "160/84A";
-            } else if (size.equals("3")) {
-                worldSize = "165/88A";
-            } else if (size.equals("4")) {
-                worldSize = "170/92A";
-            } else if (size.equals("5")) {
-                worldSize = "175/96A";
-            } else {
-                worldSize = "#";
+        {
+            switch (size) {
+                case "1":
+                    worldSize = "155/80A";
+                    break;
+                case "2":
+                    worldSize = "60/84A";
+                    break;
+                case "3":
+                    worldSize = "165/88A";
+                    break;
+                case "4":
+                    worldSize = "170/92A";
+                    break;
+                case "5":
+                    worldSize = "175/96A";
+                    break;
+                default:
+                    worldSize = "#" + ts;
+                    break;
             }
-
+        }
         return worldSize;
     }
 

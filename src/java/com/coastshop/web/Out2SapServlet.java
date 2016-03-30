@@ -117,7 +117,7 @@ public class Out2SapServlet extends HttpServlet {
                     cell = wb.getSheetAt(0).getRow(row).getCell(2);   //danwei
                     cell.setCellValue("件");
                     cell = wb.getSheetAt(0).getRow(row).getCell(3);   //color
-                    cell.setCellValue(info.getColorType()+info.getOriginColor());
+                    cell.setCellValue(info.getOriginColor());
                     cell = wb.getSheetAt(0).getRow(row).getCell(4);   //colorType
                     cell.setCellValue(info.getColorType());
                     cell = wb.getSheetAt(0).getRow(row).getCell(5);   //first
