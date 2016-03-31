@@ -682,11 +682,10 @@ public class ProductUtil {
                     worldSize = "175/76A";
                     break;
                 default:
-                    worldSize = "#" + ts;
+                    worldSize = "#"+ts;
                     break;
             }
         } else //shangyi
-        {
             switch (size) {
                 case "1":
                     worldSize = "155/80A";
@@ -704,10 +703,9 @@ public class ProductUtil {
                     worldSize = "175/96A";
                     break;
                 default:
-                    worldSize = "#" + ts;
+                    worldSize = "#"+ts;
                     break;
             }
-        }
         return worldSize;
     }
 
