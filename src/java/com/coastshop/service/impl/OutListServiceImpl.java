@@ -428,4 +428,25 @@ public class OutListServiceImpl implements IOutListService {
             }
         }
     }
+    
+    @Override
+    public List<OutList> getFromDate(Date begindate, Date enddate) throws Exception {
+        Connection conn = null;
+        try {
+            conn = DatabaseConnection.getConnection();
+            IOutListDAO dao = DAOFactory.getOutListDAOInstance(conn);
+            List<OutList> list = dao.getFromDate(begindate, enddate);
+            if (list.isEmpty()) {
+                return null;
+            } else {
+                return list;
+            }
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            if (conn != null) {
+                conn.close();
+            }
+        }
+    }
 }

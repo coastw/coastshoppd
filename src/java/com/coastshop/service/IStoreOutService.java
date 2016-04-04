@@ -37,6 +37,7 @@ public interface IStoreOutService {
      * @throws Exception
      */
     public List<StoreOutProductInfo> findDistinctProductInfosByLists(List<OutList> outlists) throws Exception;
+    public List<StoreOutProductInfo> findSAPByLists(List<OutList> outlists) throws Exception;
     
     public List<StoreOutProductInfo> findDistinctAllProductInfos(String brand) throws Exception;
     

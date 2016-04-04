@@ -317,4 +317,32 @@ public class OutListDAOImpl implements IOutListDAO {
         this.pstmt.close();
         return outList;
     }
+
+    @Override
+    public List<OutList> getFromDate(Date begindate, Date enddate) throws Exception {
+        String sql = "SELECT `id`,`brandid`,`shopid`,`userid`,`date` FROM `tbstoreoutlist` "
+                + "WHERE `date` BETWEEN ? AND ? "
+                + "AND `brandid`=?";
+        int brandid = 1;
+        this.pstmt = this.conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        this.pstmt.setDate(1, new java.sql.Date(begindate.getTime()));
+        this.pstmt.setDate(2, new java.sql.Date(enddate.getTime()));
+        this.pstmt.setInt(3, brandid);
+        ResultSet rs = this.pstmt.executeQuery();
+        rs.last();
+        ArrayList<OutList> list = new ArrayList<OutList>(rs.getRow());
+        rs.beforeFirst();
+        while (rs.next()) {
+            OutList outList = new OutList();
+            outList.setId(rs.getInt(1));
+            outList.setBrandid(rs.getInt(2));
+            outList.setShopid(rs.getInt(3));
+            outList.setUserid(rs.getInt(4));
+            outList.setDate(rs.getDate(5));
+            list.add(outList);
+        }
+        rs.close();
+        this.pstmt.close();
+        return list;
+    }
 }

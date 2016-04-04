@@ -43,6 +43,7 @@
             <li><a class="button" href="productlist.do">价格管理</a></li>
             <li><a class="button" href="discount.do">折扣管理</a></li>
             <li><a class="button" href="createshop.jsp">商店管理</a></li>
+            <li><a class="button" href="shopinsapbydate.jsp">从日期获取SAP</a></li>
             <li><a class="button" href="shopin.do">上品主数据</a></li>
         </ul>
         <hr />

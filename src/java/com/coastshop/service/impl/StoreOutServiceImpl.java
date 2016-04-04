@@ -9,6 +9,7 @@ import com.coastshop.dao.IStoreOutDAO;
 import com.coastshop.dbc.DatabaseConnection;
 import com.coastshop.factory.DAOFactory;
 import com.coastshop.service.IStoreOutService;
+import com.coastshop.util.ProductUtil;
 import com.coastshop.util.StoreOutComparator;
 import com.coastshop.util.StoreOutProductInfo;
 import com.coastshop.util.StoreOutProductUtil;
@@ -454,6 +455,66 @@ public class StoreOutServiceImpl implements IStoreOutService {
             conn = DatabaseConnection.getConnection();
             IStoreOutDAO dao = DAOFactory.getStoreOutDAOInstance(conn);
             return dao.getSumAmount(outlistid);
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            if (conn != null) {
+                conn.close();
+            }
+        }
+    }
+    
+    @Override
+    public List<StoreOutProductInfo> findSAPByLists(List<OutList> outlists) throws Exception {
+        Connection conn = null;
+        try {
+            conn = DatabaseConnection.getConnection();
+            //
+            List<StoreOutProductInfo> sopilist = null;  //准备最终返回的结果
+            String brand = null;    //准备要获取的品牌
+            List<StoreOut> solist = new ArrayList<StoreOut>(); //准备汇总list
+
+            Iterator<OutList> iter = outlists.iterator();
+            while (iter.hasNext()) {
+                OutList outlist = iter.next();
+                int listid = outlist.getId();   //获得listid
+                if (brand == null) {    //只获取一次brand
+                    brand = DAOFactory.getBrandDAOInstance(conn).getById(outlist.getBrandid()).getName();
+                }
+                //通过id获取List<StoreOut>,放在solist中
+                List<StoreOut> onelist = DAOFactory.getStoreOutDAOInstance(conn).getByListId(listid);
+                if (onelist != null) {
+                    solist.addAll(onelist);
+                }
+            }
+            //去除重复: 只比较sn,合并:amount
+            solist = singleSn(solist);
+            //排序: 只比较sn
+            Collections.sort(solist, new StoreOutSimpleComparator());
+            //变成可读形式
+            if (solist != null) {
+                sopilist = new ArrayList<StoreOutProductInfo>();
+                Iterator<StoreOut> iter2 = solist.iterator();
+                while (iter2.hasNext()) {
+                    StoreOut so = iter2.next();
+                    //价格可能为空
+                    int price = 0;
+                    try {
+                        price = DAOFactory.getProductDAOInstance(conn).getBySn(so.getSn()).getPrice();
+                    } catch (Exception e) {
+                        System.out.println("!505行,No price: id=" + so.getId() + ",sn=" + so.getSn());
+                    }
+                    StoreOutProductInfo sopi = null;
+                    String[] sizes = ProductUtil.SIZE_STRINGS;
+                    for (int i = 0; i < sizes.length; i++) {
+                        sopi = StoreOutProductUtil.getStoreOutProductInfo(so.getId(), so.getSn(), so.getColor(), sizes[i], price, so.getAmount(), brand);
+                        if (sopi != null) {
+                            sopilist.add(sopi);
+                        }
+                    }
+                }
+            }
+            return sopilist;
         } catch (Exception e) {
             throw e;
         } finally {

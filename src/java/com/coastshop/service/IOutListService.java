@@ -29,6 +29,7 @@ public interface IOutListService {
     public List<OutList> getByShopId(int shopid) throws Exception;
     public List<OutList> getByDate(Date date) throws Exception;
     public List<OutList> getFromDateShopIdBrandId(Date begindate,Date enddate, int shopid, int brandid) throws Exception;
+    public List<OutList> getFromDate(Date begindate,Date enddate) throws Exception;
     public int getCount() throws Exception;
     public int getCountByShop(int shopid) throws Exception;
 }

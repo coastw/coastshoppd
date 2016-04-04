@@ -18,6 +18,7 @@ public class ProductUtil {
     public static final String SNREGEX = "^[1-9]{1}[1-4]{1}[0-9]{1}[0-9]{3}[0-9]{3}$";  //sn
     public static final String COLORREGEX = "^[0-9]{5}$"; //color
     public static final String SIZEREGEX = "^[1-5]{1}$";    //size
+    public static final String[] SIZE_STRINGS = {"1","2","3","4","5"};
 
     public static ProductInfo getProductInfo(String sn) {
         ProductInfo pi = new ProductInfo();

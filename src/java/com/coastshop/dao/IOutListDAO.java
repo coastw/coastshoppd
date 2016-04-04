@@ -26,6 +26,7 @@ public interface IOutListDAO {
     public List<OutList> getByShopId(int shopid, String limitString) throws Exception;
     public List<OutList> getByDate(Date date) throws Exception;
     public List<OutList> getFromDateShopIDBrandId(Date begindate,Date enddate, int shopid, int brandid) throws Exception;
+    public List<OutList> getFromDate(Date begindate,Date enddate) throws Exception;
     public int getCount() throws Exception;
     public int getCountByShopId(int shopid) throws Exception;
     
