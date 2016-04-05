@@ -16,6 +16,28 @@ public class StoreOut {
     private int amount;
     private int outlistid;
 
+    public StoreOut() {
+        super();
+    }
+
+    public StoreOut(int id, String sn, String color, String size, int amount, int outlistid) {
+        super();
+        this.id = id;
+        this.sn = sn;
+        this.color = color;
+        this.size = size;
+        this.amount = amount;
+        this.outlistid = outlistid;
+    }
+
+    @Override
+    public String toString() {
+        return "StoreOut{" + "id=" + id + ", sn=" + sn + ", color=" + color + ", size=" + size + ", amount=" + amount + ", outlistid=" + outlistid + '}';
+    }
+
+    
+    
+    
     /**
      * @return the id
      */

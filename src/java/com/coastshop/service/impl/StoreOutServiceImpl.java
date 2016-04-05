@@ -17,6 +17,7 @@ import com.coastshop.util.StoreOutSimpleComparator;
 import com.coastshop.vo.OutList;
 import com.coastshop.vo.Product;
 import com.coastshop.vo.SimpleStoreOut;
+import com.coastshop.vo.SingleSnColorStoreOut;
 import com.coastshop.vo.StoreOut;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -393,15 +394,12 @@ public class StoreOutServiceImpl implements IStoreOutService {
             sso.setColor(so.getColor());
             sso.setAmount(so.getAmount());
             sso.setOutlistid(so.getOutlistid());
-            //TODO amount
             if (!(newList.contains(sso))) {  //不重复则add,根据复写的Object.equals()方法
                 newList.add(sso);
             } else {                          //重复则更新已有元素的amount
                 int index = newList.indexOf(sso); //此元素在列表中的位置
                 SimpleStoreOut existSimpleStoreOut = newList.get(index); //取得已有的元素
                 existSimpleStoreOut.setAmount(existSimpleStoreOut.getAmount() + sso.getAmount());//将以有的数量与新数量相加
-//                newList.remove(index);
-//                newList.add(existSimpleStoreOut);
             }
         }
         List<StoreOut> finalList = new ArrayList<StoreOut>();
@@ -487,8 +485,8 @@ public class StoreOutServiceImpl implements IStoreOutService {
                     solist.addAll(onelist);
                 }
             }
-            //去除重复: 只比较sn,合并:amount
-            solist = singleSn(solist);
+            //去除重复: 只比较sn+color,合并:amount
+            solist = singleSnColor(solist);
             //排序: 只比较sn
             Collections.sort(solist, new StoreOutSimpleComparator());
             //变成可读形式
@@ -522,5 +520,38 @@ public class StoreOutServiceImpl implements IStoreOutService {
                 conn.close();
             }
         }
+    }
+    
+    /**
+     * 如果sn+color相同则视为一样
+     * @param list
+     * @return 
+     */
+    public List<StoreOut> singleSnColor(List<StoreOut> list) {
+        List<SingleSnColorStoreOut> newList = new ArrayList<SingleSnColorStoreOut>();
+        Iterator<StoreOut> iter = list.iterator();
+        while (iter.hasNext()) {
+            StoreOut so = iter.next();
+            SingleSnColorStoreOut sso = new SingleSnColorStoreOut();
+            sso.setId(so.getId());
+            sso.setSn(so.getSn());
+            sso.setSize(so.getSize());
+            sso.setColor(so.getColor());
+            sso.setAmount(so.getAmount());
+            sso.setOutlistid(so.getOutlistid());
+            //TODO amount
+            if (!(newList.contains(sso))) {  //不重复则add,根据复写的Object.equals()方法
+                newList.add(sso);
+            } else {                          //重复则更新已有元素的amount
+                int index = newList.indexOf(sso); //此元素在列表中的位置
+                SingleSnColorStoreOut existSingleSnColorStoreOut = newList.get(index); //取得已有的元素
+                existSingleSnColorStoreOut.setAmount(existSingleSnColorStoreOut.getAmount() + sso.getAmount());//将以有的数量与新数量相加
+//                newList.remove(index);
+//                newList.add(existSimpleStoreOut);
+            }
+        }
+        List<StoreOut> finalList = new ArrayList<StoreOut>();
+        finalList.addAll(newList);
+        return finalList;
     }
 }

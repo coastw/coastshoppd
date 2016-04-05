@@ -692,7 +692,7 @@ public class ProductUtil {
                     worldSize = "155/80A";
                     break;
                 case "2":
-                    worldSize = "60/84A";
+                    worldSize = "160/84A";
                     break;
                 case "3":
                     worldSize = "165/88A";
