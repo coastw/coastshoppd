@@ -22,18 +22,22 @@
             .hide{
                 display: none;
             }
+            /*0415*/
+            .mainbody{width: 100%}
+            .mainbodyleft{float: left; width: 50%; min-width: 500px}
+            .mainbodyright{float: left; font-size:300px;font-weight: bold; padding: 0 0 0 0}
         </style>
         <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
         <script type="text/javascript" src="js/jquery-ui-1.9.2.custom.min.js"></script>
         <script type="text/javascript">
-            $(function() {
+            $(function () {
                 //alert("hello");
                 showData(0);
                 /**
                  * 条码扫
                  */
                 $("#sno").focus();
-                $("#sno").bind('keyup', function(e) {
+                $("#sno").bind('keyup', function (e) {
                     //e.preventDefault();
                     if (e.keyCode === 13) {
                         //alert("13");
@@ -41,7 +45,7 @@
                         var sno = $.trim($("#sno").val());
                         if (validate(sno)) {
                             //查价格
-                            $.post("ajax.do", {method: "getprice", keyword: $("#sno").val()}, function(data) {
+                            $.post("ajax.do", {method: "getprice", keyword: $("#sno").val()}, function (data) {
                                 //如果没查到则价格为0
                                 var price = parseInt(data);
                                 if (price === 0) {
@@ -113,7 +117,7 @@
                         data: "outlistid=" + outlistid + "&sno=" + sno,
                         cache: false,
                         async: false,
-                        success: function(data) {
+                        success: function (data) {
                             var regex = /^[0-9]+$/;
                             if (regex.test(data)) { //是数字
                                 showData(data);
@@ -136,7 +140,7 @@
                     var sn = $.trim($("#sn").val());
                     var price = $.trim($("#price").val());
                     if (sn.lengh !== 0 && validatePrice(price)) {
-                        $.post("ajax.do", {method: "addproduct", sn: sn, price: price}, function(data) {
+                        $.post("ajax.do", {method: "addproduct", sn: sn, price: price}, function (data) {
                             if (data != 0) {
                                 postData($("#sno").val());
                                 $("#sn").val("");
@@ -157,9 +161,9 @@
                 //显示数量
                 function showSum() {
                     var outlistid = "${sessionScope.listid}";
-                    $("#listid").empty();
-                    $.post("ajax.do", {method: "getsumbylist", keyword: outlistid}, function(sum) {
-                        $("#listid").append(sum);
+                    $(".listsum").empty();
+                    $.post("ajax.do", {method: "getsumbylist", keyword: outlistid}, function (sum) {
+                        $(".listsum").append(sum);
                     });
                 }
 
@@ -169,7 +173,7 @@
                     var outlistid = "${sessionScope.listid}";
                     var dataElement = $("#data");
                     dataElement.empty();
-                    $.post("ajax.do", {method: "getsolist", keyword: outlistid, id: id}, function(data) {
+                    $.post("ajax.do", {method: "getsolist", keyword: outlistid, id: id}, function (data) {
                         dataElement.append(data);
                     });
                     showSum();
@@ -187,11 +191,11 @@
                     draggable: false,
                     resizable: false,
                     buttons: {
-                        提交: function() {
+                        提交: function () {
                             //提交价格
                             postPrice();
                         },
-                        取消: function() {
+                        取消: function () {
                             if (confirm("是否取消提交价格？")) {
                                 $(this).dialog("close");
                             }
@@ -222,20 +226,23 @@
 
         <!--Session-->
         <div id="listifno">
-            <p>单号:${sessionScope.currentlist.id},地点:${sessionScope.currentlist.shop},品牌:${sessionScope.currentlist.brand},数量:<span id="listid"></span></p>
+            <p>单号:${sessionScope.currentlist.id},地点:${sessionScope.currentlist.shop},品牌:${sessionScope.currentlist.brand},数量:<span id="listid" class="listsum"></span></p>
         </div>
         <!-- 扫描条码 -->
-        <div id="content">
-            <p>
-                标签序列号：
-                <input id="sno" type="text" name="sno" />
-            </p>
-            <!-- !!!导致IE不能回车!!!
-            <button id="btnshow">显示明细</button>
-            <button id="btndone">录入完成</button>
-            <button id="btnexcel">使用Excel打开</button>
-            -->
-            <div id="data"></div>
+        <div class="mainbody">
+            <div id="content" class="mainbodyleft">
+                <p>
+                    标签序列号：
+                    <input id="sno" type="text" name="sno" />
+                </p>
+                <!-- !!!导致IE不能回车!!!
+                <button id="btnshow">显示明细</button>
+                <button id="btndone">录入完成</button>
+                <button id="btnexcel">使用Excel打开</button>
+                -->
+                <div id="data"></div>
+            </div>
+            <div class="mainbodyright listsum"></div>
         </div>
         <!-- 扫描条码 -->
         <!-- 输入价格表单 -->
