@@ -60,9 +60,9 @@ public class MyServletListener implements ServletContextListener {
             //
             //EMail.send(file, filename);
             //print
-            long end = System.currentTimeMillis();
-            String time = Long.toString(end - start);
-            System.out.println("<h3>导出成功，用时: " + time + " 毫秒</h3>");
+//            long end = System.currentTimeMillis();
+//            String time = Long.toString(end - start);
+//            System.out.println("<h3>导出成功，用时: " + time + " 毫秒</h3>");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

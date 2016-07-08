@@ -36,6 +36,8 @@
         <a href="out2sap.jsp">出库->上品SAP</a>
         <a href="createoutlistform.jsp">新建出库单</a>-->
         <ul>
+            <li><a class="button" href="importorder/importprice.jsp">导入价格</a></li>
+            <li><a class="button" href="importorder/importorder.jsp">导入出库单</a></li>
             <li><a class="button" href="createoutlistform.jsp">新建出库单</a></li>
             <li><a class="button" href="outlist.do">出库单查询</a></li>
             <li><a class="button" href="bjd.jsp">出库->报价单</a></li>

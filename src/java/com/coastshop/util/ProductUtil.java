@@ -18,7 +18,7 @@ public class ProductUtil {
     public static final String SNREGEX = "^[1-9]{1}[1-4]{1}[0-9]{1}[0-9]{3}[0-9]{3}$";  //sn
     public static final String COLORREGEX = "^[0-9]{5}$"; //color
     public static final String SIZEREGEX = "^[1-5]{1}$";    //size
-    public static final String[] SIZE_STRINGS = {"1","2","3","4","5"};
+    public static final String[] SIZE_STRINGS = {"1", "2", "3", "4", "5"};
 
     public static ProductInfo getProductInfo(String sn) {
         ProductInfo pi = new ProductInfo();
@@ -233,6 +233,7 @@ public class ProductUtil {
             case "08":
             case "09":
             case "11":
+            case "12":
             case "13":
             case "14":
                 secondType = "女装上装";
@@ -289,6 +290,7 @@ public class ProductUtil {
             case "063":
             case "064":
             case "065":
+            case "122":
                 thirdType = "T恤";
                 break;
             case "081":
@@ -359,6 +361,31 @@ public class ProductUtil {
     public static String getOriginColor(String color) {
         String originColor;
         switch (color) {
+            case "12014":
+                originColor = "绿色花";
+                break;
+            case "04061":
+                originColor = "玫粉";
+                break;
+            case "13012":
+                originColor = "草绿条";
+                break;
+            case "11103":
+                originColor = "象牙白格";
+                break;
+            case "12090":
+                originColor = "灰色花";
+                break;
+            case "12079":
+                originColor = "酒红花";
+                break;
+            case "04068":
+                originColor = "粉色";
+                break;
+            case "08089":
+                originColor = "赤金";
+                break;
+            //
             case "01002":
                 originColor = "柳黄";
                 break;
@@ -397,6 +424,9 @@ public class ProductUtil {
                 break;
             case "03052":
                 originColor = "湖蓝";
+                break;
+            case "04063":
+                originColor = "丁香色";
                 break;
             case "04064":
                 originColor = "藕色";
@@ -496,6 +526,9 @@ public class ProductUtil {
                 break;
             case "12009":
                 originColor = "植物绿花";
+                break;
+            case "12012":
+                originColor = "草绿花";
                 break;
             case "12015":
                 originColor = "豆绿花";
@@ -683,10 +716,11 @@ public class ProductUtil {
                     worldSize = "175/76A";
                     break;
                 default:
-                    worldSize = "#"+ts;
+                    worldSize = "#" + ts;
                     break;
             }
         } else //shangyi
+        {
             switch (size) {
                 case "1":
                     worldSize = "155/80A";
@@ -704,9 +738,10 @@ public class ProductUtil {
                     worldSize = "175/96A";
                     break;
                 default:
-                    worldSize = "#"+ts;
+                    worldSize = "#" + ts;
                     break;
             }
+        }
         return worldSize;
     }
 

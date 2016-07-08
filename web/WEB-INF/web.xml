@@ -140,6 +140,14 @@
         <servlet-name>ShopinSAPByDateServlet</servlet-name>
         <servlet-class>com.coastshop.web.ShopinSAPByDateServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ImportPriceServlet</servlet-name>
+        <servlet-class>com.coastshop.web.ImportPriceServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ImportOrderSevlet</servlet-name>
+        <servlet-class>com.coastshop.web.ImportOrderSevlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login.do</url-pattern>
@@ -223,6 +231,14 @@
     <servlet-mapping>
         <servlet-name>ShopinSAPByDateServlet</servlet-name>
         <url-pattern>/shopinsapbydate.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ImportPriceServlet</servlet-name>
+        <url-pattern>/importprice.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ImportOrderSevlet</servlet-name>
+        <url-pattern>/importorder.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
