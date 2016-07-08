@@ -65,7 +65,7 @@ public class ImportOrderUtil {
             for (StoreOut product : products) {
                 int id = ServiceFactory.getStoreOutServiceInstance().add(product);
                 if (id > 0) {
-                    count++;
+                    count+=product.getAmount();
                 }
             }
         } catch (Exception e) {

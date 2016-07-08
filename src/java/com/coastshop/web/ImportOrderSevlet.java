@@ -90,7 +90,7 @@ public class ImportOrderSevlet extends HttpServlet {
                 out.println("<html>");
                 out.println("<body>");
                 out.println("<h1>导入订单</h1>");
-                out.println("<h3>导入: " + count + " 条数据</h3>");
+                out.println("<h3>导入: " + count + " 件</h3>");
                 out.println("<a href='" + servletContext.getContextPath() + "/index.jsp'>Home</a>");
                 out.println("</body>");
                 out.println("</html>");
