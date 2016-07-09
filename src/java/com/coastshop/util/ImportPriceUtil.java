@@ -55,9 +55,10 @@ public class ImportPriceUtil {
         int count = 0;
         try {
             for (Product product : products) {
-                boolean flag = ServiceFactory.getProductServiceInstance().insert(product);
-                if (flag) {
-                    count++;
+                String sn = product.getSn();
+                if (ServiceFactory.getProductServiceInstance().find(sn) == null) {
+                    boolean flag = ServiceFactory.getProductServiceInstance().insert(product);
+                    if (flag) count++;
                 }
             }
         } catch (Exception e) {
