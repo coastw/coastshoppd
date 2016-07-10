@@ -46,7 +46,7 @@ public class SAPUtil {
         supplierCell.setCellValue("北京亿合众通服饰有限公司");
         //品牌名称：
         Cell brandCell = sheet.getRow(2).getCell(1);
-        brandCell.setCellValue("片断");
+        brandCell.setCellValue("dribs&drabs片断");
         //Data
         Iterator<StoreOutProductInfo> iter = sopiList.iterator();
         int row = 4;

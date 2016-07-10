@@ -98,7 +98,7 @@ public class Out2SapServlet extends HttpServlet {
             supplierCell.setCellValue("北京亿合众通服饰有限公司");
             //品牌名称：
             Cell brandCell = sheet.getRow(2).getCell(1);
-            brandCell.setCellValue("片断");
+            brandCell.setCellValue("dribs&drabs片断");
             //Data
             if (soiflist == null) {
                 System.out.println("没有数据");
