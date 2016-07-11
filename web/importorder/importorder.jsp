@@ -17,7 +17,7 @@
         <script type="text/javascript" src="<c:url value="/js/jquery-1.8.3.js"/>"></script>
         <script type="text/javascript" src="<c:url value="/js/jquery-ui-1.9.2.custom.js"/>"></script>
         <script type="text/javascript" src="<c:url value="/js/jquery.ui.datepicker-zh-CN.js"/>"></script>
-        
+
     </head>
     <body>
         <h1>导入出库单</h1>
@@ -25,7 +25,7 @@
             <jsp:param name="subTitle" value="导入订单" />
         </jsp:include>
 
-        <div id="myform">
+        <div id="myform" style="margin-left: 0">
             <div id="titlebar">导入订单</div>
             <div id="bjdform">		<!-- form -->
                 <p class="validateTips">导入新的出库单</p>
@@ -49,6 +49,45 @@
                     </fieldset>
                 </form>
             </div>
+        </div>
+
+        <hr />
+        
+        <div>
+            <p>文件格式: *.xls</p>
+            <p>内容格式如下:</p>
+            <table border="1" cellpadding="5" cellspacing="0">
+                <tr>
+                    <th>款号</th>
+                    <th>色号</th>
+                    <th>尺码</th>
+                    <th>发货数量</th>
+                </tr>
+                <tr>
+                    <td>621021010</td>
+                    <td>12014</td>
+                    <td>3</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>621021010</td>
+                    <td>12014</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>621021010</td>
+                    <td>12014</td>
+                    <td>2</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>621021010</td>
+                    <td>12014</td>
+                    <td>4</td>
+                    <td>1</td>
+                </tr>
+            </table>
         </div>
     </body>
 </html>
