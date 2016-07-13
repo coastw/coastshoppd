@@ -3,7 +3,6 @@
  * and open the template in the editor.
  */
 package com.coastshop.dao;
-import com.coastshop.vo.Product;
 import com.coastshop.vo.User;
 import java.util.List;
 

@@ -632,35 +632,28 @@ public class ProductUtil {
 
     public static String getColorType(String color) {
         String colorType;
-        if (color.equals("09103") || color.equals("09099") || color.equals("09097")) {
-            colorType = "白色";
-        } else if (color.equals("10115")) {
-            colorType = "黑色";
-        } else if (color.equals("09101")) {
-            colorType = "桔色";
-        } else if (color.equals("08087")) {
-            colorType = "棕色";
-        } else if (color.equals("09106") || color.equals("09100")) {
-            colorType = "粉色";
-        } else if (color.equals("10115") || color.equals("12115") || color.equals("13115")) {
-            colorType = "黑色";
-        } else if (color.matches("^[0]{1}[7]{1}[0-9]{3}$")) {
-            colorType = "黄色";
-        } else if (color.matches("^[0]{1}[4]{1}[0-9]{3}$")) {
-            colorType = "紫色";
-        } else if (color.matches("^[0]{1}[5]{1}[0-9]{3}$") || color.matches("^[0]{1}[6]{1}[0-9]{3}$")) {
-            colorType = "红色";
-        } else if (color.matches("^[0]{1}[1]{1}[0-9]{3}$")) {
+        if (color.matches("^[0]{1}[1]{1}[0-9]{3}$")) {
             colorType = "绿色";
-        } else if (color.matches("^[0]{1}[8]{1}[0-9]{3}$")) {
-            colorType = "灰色";
+        } else if (color.matches("^[0]{1}[2]{1}[0-9]{3}$")) {
+            colorType = "绿色";
         } else if (color.matches("^[0]{1}[3]{1}[0-9]{3}$")) {
             colorType = "蓝色";
-        } else if (color.matches("^[1]{1}[1]{1}[0-9]{3}$") || color.matches("^[1]{1}[2]{1}[0-9]{3}$")
-                || color.matches("^[1]{1}[3]{1}[0-9]{3}$")) {
-            colorType = "花色";
+        } else if (color.matches("^[0]{1}[4]{1}[0-9]{3}$")) {
+            colorType = "紫色";
+        } else if (color.matches("^[0]{1}[5]{1}[0-9]{3}$")) {
+            colorType = "粉色";
+        } else if (color.matches("^[0]{1}[6]{1}[0-9]{3}$")) {
+            colorType = "红色";
+        } else if (color.matches("^[0]{1}[7]{1}[0-9]{3}$")) {
+            colorType = "黄色";
+        } else if (color.matches("^[0]{1}[8]{1}[0-9]{3}$") ) {
+            colorType = "灰色";
+        } else if (color.matches("^[0]{1}[9]{1}[0-9]{3}$")) {
+            colorType = "白色";
+        } else if (color.matches("^[1]{1}[0]{1}[0-9]{3}$")) {
+            colorType = "黑色";
         } else {
-            colorType = "#" + color;
+            colorType = "花色";
         }
         return colorType;
     }
