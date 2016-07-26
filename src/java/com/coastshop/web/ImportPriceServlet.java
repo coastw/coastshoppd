@@ -6,8 +6,6 @@
 package com.coastshop.web;
 
 import com.coastshop.util.ImportPriceUtil;
-import java.io.BufferedInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -20,7 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.io.FileUtils;
 
 /**
  *
@@ -58,14 +55,14 @@ public class ImportPriceServlet extends HttpServlet {
                 } else {  //上传的文件
                     String name = item.getName();
                     System.out.println("上传的文件: " + name);
-                    inputStream = new BufferedInputStream(item.getInputStream());
+                    inputStream = item.getInputStream();
 
-                    String serverPath = servletContext.getRealPath("/importorder") + File.separator + "price.xls";
-                    File serverFile = new File(serverPath);
-                    FileUtils.copyInputStreamToFile(inputStream, serverFile);
+//                    String serverPath = servletContext.getRealPath("/importorder") + File.separator + "price.xls";
+//                    File serverFile = new File(serverPath);
+//                    FileUtils.copyInputStreamToFile(inputStream, serverFile);
 
                     //执行导入
-                    int count = ImportPriceUtil.doImport(serverFile);
+                    int count = ImportPriceUtil.doImport(inputStream);
 
                     out.println("<html>");
                     out.println("<body>");

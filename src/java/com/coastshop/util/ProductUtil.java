@@ -290,6 +290,7 @@ public class ProductUtil {
             case "063":
             case "064":
             case "065":
+            case "121":
             case "122":
                 thirdType = "T恤";
                 break;
@@ -361,6 +362,19 @@ public class ProductUtil {
     public static String getOriginColor(String color) {
         String originColor;
         switch (color) {
+            case "09003":
+                originColor = "象牙白";
+                break;
+            case "03012":
+                originColor = "牛仔蓝";
+                break;
+            case "13090":
+                originColor = "灰色条";
+                break;
+            case "11003":
+                originColor = "柳绿格";
+                break;
+            //
             case "12014":
                 originColor = "绿色花";
                 break;
@@ -646,7 +660,7 @@ public class ProductUtil {
             colorType = "红色";
         } else if (color.matches("^[0]{1}[7]{1}[0-9]{3}$")) {
             colorType = "黄色";
-        } else if (color.matches("^[0]{1}[8]{1}[0-9]{3}$") ) {
+        } else if (color.matches("^[0]{1}[8]{1}[0-9]{3}$")) {
             colorType = "灰色";
         } else if (color.matches("^[0]{1}[9]{1}[0-9]{3}$")) {
             colorType = "白色";

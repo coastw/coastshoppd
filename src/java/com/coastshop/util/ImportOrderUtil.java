@@ -27,17 +27,21 @@ public class ImportOrderUtil {
         int row = 1;
         Cell cell = null;
         try {
+            POIUtil poiUtil = new POIUtil();
             Workbook wb = new HSSFWorkbook(new FileInputStream(file));
             Sheet sheet = wb.getSheetAt(0);
             while (row <= sheet.getLastRowNum()) {
                 cell = sheet.getRow(row).getCell(0);
-                String sn = cell.getStringCellValue();
+                String sn = poiUtil.getCellContentToString(cell);
+                
                 cell = sheet.getRow(row).getCell(1);
-                String color = cell.getStringCellValue();
+                String color = poiUtil.getCellContentToString(cell);
+                
                 cell = sheet.getRow(row).getCell(2);
-                String size = cell.getStringCellValue();
+                String size = poiUtil.getCellContentToString(cell);
+                
                 cell = sheet.getRow(row).getCell(3);
-                int amount = (int) cell.getNumericCellValue();
+                int amount = Integer.parseInt(poiUtil.getCellContentToString(cell));
                 if (amount == 0) {
                     continue;
                 }
