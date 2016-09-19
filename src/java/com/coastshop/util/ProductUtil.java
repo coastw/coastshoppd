@@ -11,7 +11,7 @@ package com.coastshop.util;
 public class ProductUtil {
 
     //431023120
-    //512023135
+    //5 1 2 0 2 3 1 3 5
     //512023135120095
     //年份1 季节1 波段1 品类3 没用3 色码5 尺码1
     public static final String BARCODEREGEX = "^[1-9]{1}[1-4]{1}[0-9]{1}[0-9]{3}[0-9]{3}[0-9]{5}[1-5]{1}$";        //sn color size
@@ -232,6 +232,7 @@ public class ProductUtil {
             case "07":
             case "08":
             case "09":
+            case "10":
             case "11":
             case "12":
             case "13":
@@ -321,6 +322,7 @@ public class ProductUtil {
             case "011":
             case "012":
             case "013":
+            case "101":
                 thirdType = "外套";
                 break;
             case "091":
@@ -362,6 +364,9 @@ public class ProductUtil {
     public static String getOriginColor(String color) {
         String originColor;
         switch (color) {
+            case "11014":
+                originColor = "绿色格";
+                break;
             case "09003":
                 originColor = "象牙白";
                 break;
@@ -644,27 +649,27 @@ public class ProductUtil {
         return originColor;
     }
 
-    public static String getColorType(String color) {
+    public static String getColorType(String colorCode) {
         String colorType;
-        if (color.matches("^[0]{1}[1]{1}[0-9]{3}$")) {
+        if (colorCode.matches("^[0]{1}[1]{1}[0-9]{3}$")) {
             colorType = "绿色";
-        } else if (color.matches("^[0]{1}[2]{1}[0-9]{3}$")) {
+        } else if (colorCode.matches("^[0]{1}[2]{1}[0-9]{3}$")) {
             colorType = "绿色";
-        } else if (color.matches("^[0]{1}[3]{1}[0-9]{3}$")) {
+        } else if (colorCode.matches("^[0]{1}[3]{1}[0-9]{3}$")) {
             colorType = "蓝色";
-        } else if (color.matches("^[0]{1}[4]{1}[0-9]{3}$")) {
+        } else if (colorCode.matches("^[0]{1}[4]{1}[0-9]{3}$")) {
             colorType = "紫色";
-        } else if (color.matches("^[0]{1}[5]{1}[0-9]{3}$")) {
+        } else if (colorCode.matches("^[0]{1}[5]{1}[0-9]{3}$")) {
             colorType = "粉色";
-        } else if (color.matches("^[0]{1}[6]{1}[0-9]{3}$")) {
+        } else if (colorCode.matches("^[0]{1}[6]{1}[0-9]{3}$")) {
             colorType = "红色";
-        } else if (color.matches("^[0]{1}[7]{1}[0-9]{3}$")) {
+        } else if (colorCode.matches("^[0]{1}[7]{1}[0-9]{3}$")) {
             colorType = "黄色";
-        } else if (color.matches("^[0]{1}[8]{1}[0-9]{3}$")) {
+        } else if (colorCode.matches("^[0]{1}[8]{1}[0-9]{3}$")) {
             colorType = "灰色";
-        } else if (color.matches("^[0]{1}[9]{1}[0-9]{3}$")) {
+        } else if (colorCode.matches("^[0]{1}[9]{1}[0-9]{3}$")) {
             colorType = "白色";
-        } else if (color.matches("^[1]{1}[0]{1}[0-9]{3}$")) {
+        } else if (colorCode.matches("^[1]{1}[0]{1}[0-9]{3}$")) {
             colorType = "黑色";
         } else {
             colorType = "花色";
@@ -703,9 +708,9 @@ public class ProductUtil {
 
     public static String getWorldSize(String sn, String size) {
         String worldSize;
-        String ts;//type string 判断上衣还是裤子
-        ts = sn.substring(3, 5);
-        if (ts.equals("03") || ts.equals("04")) {  //kuzi
+        String typeCode;//判断上衣还是裤子
+        typeCode = sn.substring(3, 5);
+        if (typeCode.equals("03") || typeCode.equals("04")) {  //kuzi
             switch (size) {
                 case "1":
                     worldSize = "155/60A";
@@ -723,7 +728,7 @@ public class ProductUtil {
                     worldSize = "175/76A";
                     break;
                 default:
-                    worldSize = "#" + ts;
+                    worldSize = "#" + typeCode;
                     break;
             }
         } else //shangyi
@@ -745,7 +750,7 @@ public class ProductUtil {
                     worldSize = "175/96A";
                     break;
                 default:
-                    worldSize = "#" + ts;
+                    worldSize = "#" + typeCode;
                     break;
             }
         }

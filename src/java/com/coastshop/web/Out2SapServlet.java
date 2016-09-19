@@ -27,7 +27,7 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 /**
  *
@@ -90,8 +90,8 @@ public class Out2SapServlet extends HttpServlet {
 
             response.setContentType("application/vnd.ms-excel;charset=UTF-8");
             //POI
-            Workbook wb = new XSSFWorkbook(is);
-            Runtime.getRuntime().gc();
+            
+            Workbook wb = WorkbookFactory.create(is);
             Sheet sheet = wb.getSheetAt(0);
             //供应商名称：
             Cell supplierCell = sheet.getRow(1).getCell(1);

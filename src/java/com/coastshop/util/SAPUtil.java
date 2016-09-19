@@ -27,13 +27,11 @@ public class SAPUtil {
         int s = sopiList.size();
         String templatefile;
         if (s <= 300) {
-            templatefile = "tmp3h.xlsx";
+            templatefile = "sap300.xlsx";
         } else if (s <= 1000) {
-            templatefile = "tmp1k.xlsx";
-        } else if (s <= 5000) {
-            templatefile = "tmp5k.xlsx";
+            templatefile = "sap1000.xlsx";
         } else {
-            templatefile = "tmp.xlsx";
+            templatefile = "sapinfinity.xlsx";
         }
         //String tmpfile = request.getServletContext().getRealPath("/") + templatefile;
         String tmpfile = templatePath + templatefile;
@@ -74,7 +72,7 @@ public class SAPUtil {
                 cell = currentRow.getCell(7);   //third
                 cell.setCellValue(info.getThirdType());
                 cell = currentRow.getCell(11);  //wSize
-                cell.setCellValue(info.getLocalSize() + "(" + info.getWorldSize() + ")");
+                cell.setCellValue(info.getWorldSize());
 //                    cell = currentRow.getCell(12);  //size
 //                    cell.setCellValue(info.getSize());
 //                    cell = wb.getSheetAt(0).getRow(row).getCell(13);  //localsize

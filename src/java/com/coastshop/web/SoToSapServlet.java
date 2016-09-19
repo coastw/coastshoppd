@@ -44,7 +44,7 @@ public class SoToSapServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("application/vnd.ms-excel;charset=UTF-8");
         OutputStream os = response.getOutputStream();
-        String tmpfile = request.getServletContext().getRealPath("/") + "tmp.xlsx";
+        String tmpfile = request.getServletContext().getRealPath("/") + "sap1000.xlsx";
         InputStream is = new FileInputStream(tmpfile);
         try {
             if (request.getParameter("listid") == null) {
