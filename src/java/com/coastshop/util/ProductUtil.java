@@ -284,6 +284,7 @@ public class ProductUtil {
             case "023":
             case "024":
             case "025":
+            case "026":
                 thirdType = "连衣裙";
                 break;
             case "061":
@@ -423,6 +424,9 @@ public class ProductUtil {
             case "01015":
                 originColor = "豆绿";
                 break;
+            case "01018":
+                originColor = "墨绿";
+                break;
             case "03036":
                 originColor = "天蓝";
                 break;
@@ -437,6 +441,12 @@ public class ProductUtil {
                 break;
             case "03043":
                 originColor = "藏青";
+                break;
+            case "03044":
+                originColor = "藏蓝";
+                break;
+            case "03045":
+                originColor = "黛蓝";
                 break;
             case "03050":
                 originColor = "水蓝";
