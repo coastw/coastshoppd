@@ -365,6 +365,45 @@ public class ProductUtil {
     public static String getOriginColor(String color) {
         String originColor;
         switch (color) {
+            //new
+            case "11068":
+                originColor = "粉色格";
+                break;
+            case "11031":
+                originColor = "湖绿格";
+                break;
+            case "11090":
+                originColor = "灰色格";
+                break;
+            case "02031":
+                originColor = "湖绿";
+                break;
+            case "01008":
+                originColor = "薄荷绿";
+                break;
+            //old
+            case "13101":
+                originColor = "粉桔条";
+                break;
+            case "13050":
+                originColor = "水蓝条";
+                break;
+            case "11012":
+                originColor = "草绿格";
+                break;
+            case "11101":
+                originColor = "粉桔格";
+                break;
+            case "13099":
+                originColor = "米色条";
+                break;
+            case "12068":
+                originColor = "粉色花";
+                break;
+            case "07081":
+                originColor = "鹅黄";
+                break;
+            //old
             case "11014":
                 originColor = "绿色格";
                 break;
@@ -380,7 +419,6 @@ public class ProductUtil {
             case "11003":
                 originColor = "柳绿格";
                 break;
-            //
             case "12014":
                 originColor = "绿色花";
                 break;
@@ -630,9 +668,6 @@ public class ProductUtil {
                 break;
             case "13083":
                 originColor = "黄色条";
-                break;
-            case "07081":
-                originColor = "娥黄";
                 break;
             case "08088":
                 originColor = "姜黄";
