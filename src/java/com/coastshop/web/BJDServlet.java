@@ -9,6 +9,7 @@ import com.coastshop.util.StoreOutProductInfo;
 import com.coastshop.vo.*;
 import java.io.*;
 import java.net.URLEncoder;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.servlet.*;
@@ -24,9 +25,8 @@ import org.apache.poi.ss.util.CellRangeAddress;
 public class BJDServlet extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP
-     * <code>GET</code> and
-     * <code>POST</code> methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -43,7 +43,8 @@ public class BJDServlet extends HttpServlet {
              * 根据参数查询outlist表
              * TODO 出入库类型，折扣
              * @param 日期(start-end),brandid,shopid (查询list表)
-             * @return 款号，原价格，折扣，折后价，年份，季节，品类
+             * @return 款号，原价格，折扣，折后价，年份，季节，品类 2017-7新格式：品牌，品项，款号，原价，现价，折扣，颜色，年份
+
              */
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             String date = df.format(new Date());
@@ -71,14 +72,15 @@ public class BJDServlet extends HttpServlet {
             //POI
             Workbook wb = new HSSFWorkbook();
             Map<String, CellStyle> styles = createStyles(wb);
-            Sheet sheet = wb.createSheet("秋水伊人报价单");
-            sheet.setColumnWidth(0, 256 * 16);
+            Sheet sheet = wb.createSheet("片断报价单");
+            sheet.setColumnWidth(0, 256 * 10);
             sheet.setColumnWidth(1, 256 * 10);
-            sheet.setColumnWidth(2, 256 * 10);
+            sheet.setColumnWidth(2, 256 * 16);
             sheet.setColumnWidth(3, 256 * 10);
             sheet.setColumnWidth(4, 256 * 10);
             sheet.setColumnWidth(5, 256 * 10);
-            sheet.setColumnWidth(6, 256 * 14);
+            sheet.setColumnWidth(6, 256 * 10);
+            sheet.setColumnWidth(7, 256 * 10);
             //Title
             //head
             Row headRow = sheet.createRow(0);
@@ -91,30 +93,33 @@ public class BJDServlet extends HttpServlet {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy年M月");
             headCell.setCellValue(brand + " " + shop + "店 报价单" + sdf.format(new Date()));
             //title
-            sheet.addMergedRegion(new CellRangeAddress(0, 0, 0, 6));
+            sheet.addMergedRegion(new CellRangeAddress(0, 0, 0, 7));//new 6->7，2017-7新格式：品牌，品项，款号，原价，现价，折扣，颜色，年份
             Row titleRow = sheet.createRow(1);
             titleRow.setHeightInPoints(20);
             Cell titleCell0 = titleRow.createCell(0);
-            titleCell0.setCellValue("款号");
+            titleCell0.setCellValue("品牌");
             titleCell0.setCellStyle(styles.get("title"));
             Cell titleCell1 = titleRow.createCell(1);
-            titleCell1.setCellValue("原价");
+            titleCell1.setCellValue("品项");
             titleCell1.setCellStyle(styles.get("title"));
             Cell titleCell2 = titleRow.createCell(2);
-            titleCell2.setCellValue("折扣");
+            titleCell2.setCellValue("款号");
             titleCell2.setCellStyle(styles.get("title"));
             Cell titleCell3 = titleRow.createCell(3);
-            titleCell3.setCellValue("折后价");
+            titleCell3.setCellValue("原价");
             titleCell3.setCellStyle(styles.get("title"));
             Cell titleCell4 = titleRow.createCell(4);
-            titleCell4.setCellValue("年份");
+            titleCell4.setCellValue("现价");
             titleCell4.setCellStyle(styles.get("title"));
             Cell titleCell5 = titleRow.createCell(5);
-            titleCell5.setCellValue("季节");
+            titleCell5.setCellValue("折扣");
             titleCell5.setCellStyle(styles.get("title"));
             Cell titleCell6 = titleRow.createCell(6);
-            titleCell6.setCellValue("品类");
+            titleCell6.setCellValue("颜色");
             titleCell6.setCellStyle(styles.get("title"));
+            Cell titleCell7 = titleRow.createCell(7);
+            titleCell7.setCellValue("年份");
+            titleCell7.setCellStyle(styles.get("title"));
             //遍历
             Iterator<StoreOutProductInfo> iter = productInfos.iterator();
             int num_row = titleRow.getRowNum() + 1;
@@ -124,6 +129,32 @@ public class BJDServlet extends HttpServlet {
                     Row row = sheet.createRow(num_row);
                     row.setHeightInPoints(15);
                     List<String> values = new ArrayList<String>();
+                    //2017-7新格式：品牌，品项，款号，原价，现价，折扣，颜色，年份
+                    values.add("片断");
+                    values.add(info.getType());
+                    values.add(info.getSn());
+                    //orgprice
+                    int orgPrice = info.getPrice();
+                    values.add(Integer.toString(info.getPrice()));
+                    //now price
+                    String persent = DiscountUtil.getDiscount(info.getSn());
+                    NumberFormat nf = NumberFormat.getPercentInstance();
+                    Number numberDiscountPersent = nf.parse(persent);
+                    int nowprice = 0;
+                    nowprice = (int) (orgPrice * numberDiscountPersent.floatValue());
+                    values.add(Integer.toString(nowprice));
+                    //discount
+                    values.add(persent);
+                    values.add(info.getColorType());
+                    values.add(info.getYear());
+                    for (int col = 0; col < 8; col++) {
+                        Cell cell = row.createCell(col);
+                        cell.setCellValue(values.get(col));
+                        cell.setCellStyle(styles.get("data"));
+                    }
+                    num_row++;
+                    //old----------------
+                    /*
                     values.add(info.getSn());
                     values.add(Integer.toString(info.getPrice()));
                     //persent
@@ -133,6 +164,7 @@ public class BJDServlet extends HttpServlet {
                     values.add(info.getYear());
                     values.add(info.getSeason());
                     values.add(info.getType());
+                    
                     for (int col = 0; col < 7; col++) {
                         Cell cell = row.createCell(col);
                         if (col == 3) {
@@ -144,10 +176,11 @@ public class BJDServlet extends HttpServlet {
                         cell.setCellStyle(styles.get("data"));
                     }
                     num_row++;
+                     */
                 }
             }
             //wb.getCreationHelper().createFormulaEvaluator().evaluateAll();
-            wb.getSheetAt(0).setForceFormulaRecalculation(true);
+//            wb.getSheetAt(0).setForceFormulaRecalculation(true);
             String filename = URLEncoder.encode(shop + "_" + brand + "_报价单_" + date + ".xls", "UTF-8");
             response.setHeader("Content-disposition", "attachment; filename=" + filename);
             wb.write(os);
@@ -161,8 +194,7 @@ public class BJDServlet extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP
-     * <code>GET</code> method.
+     * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -176,8 +208,7 @@ public class BJDServlet extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP
-     * <code>POST</code> method.
+     * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
      * @param response servlet response
