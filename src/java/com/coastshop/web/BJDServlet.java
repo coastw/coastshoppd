@@ -74,13 +74,13 @@ public class BJDServlet extends HttpServlet {
             Map<String, CellStyle> styles = createStyles(wb);
             Sheet sheet = wb.createSheet("片断报价单");
             sheet.setColumnWidth(0, 256 * 10);
-            sheet.setColumnWidth(1, 256 * 10);
+            sheet.setColumnWidth(1, 256 * 12);
             sheet.setColumnWidth(2, 256 * 16);
-            sheet.setColumnWidth(3, 256 * 10);
-            sheet.setColumnWidth(4, 256 * 10);
-            sheet.setColumnWidth(5, 256 * 10);
+            sheet.setColumnWidth(3, 256 * 7);
+            sheet.setColumnWidth(4, 256 * 7);
+            sheet.setColumnWidth(5, 256 * 7);
             sheet.setColumnWidth(6, 256 * 10);
-            sheet.setColumnWidth(7, 256 * 10);
+            sheet.setColumnWidth(7, 256 * 8);
             //Title
             //head
             Row headRow = sheet.createRow(0);
