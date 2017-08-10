@@ -5,6 +5,7 @@
 package com.coastshop.web;
 
 import com.coastshop.factory.ServiceFactory;
+import com.coastshop.util.ProductUtil;
 import com.coastshop.vo.StoreOut;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -42,10 +43,16 @@ public class CreateStoreOutServlet extends HttpServlet {
                 out.println("<h1>款号为空</h1>");
             } else {
                 int listid = Integer.parseInt(outlistid);
-                String sn = sno.substring(0, 9);
-                String color = sno.substring(9,14);
-                String size = sno.substring(14, 15);
-                //todo
+                String sn, color, size;
+                if (sno.matches(ProductUtil.BARCODEREGEX2017)) {
+                    sn = sno.substring(0, 12);
+                    color = sno.substring(12, 14);
+                    size = sno.substring(14, 15);
+                } else {
+                    sn = sno.substring(0, 9);
+                    color = sno.substring(9, 14);
+                    size = sno.substring(14, 15);
+                }
                 StoreOut so = new StoreOut();
                 so.setSn(sn);
                 so.setColor(color);
@@ -64,7 +71,7 @@ public class CreateStoreOutServlet extends HttpServlet {
             }
         } catch (Exception e) {
             out.print(id);
-        }  finally {
+        } finally {
             out.close();
         }
     }

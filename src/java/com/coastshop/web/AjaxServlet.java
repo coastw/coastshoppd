@@ -5,6 +5,7 @@
 package com.coastshop.web;
 
 import com.coastshop.factory.ServiceFactory;
+import com.coastshop.util.ProductUtil;
 import com.coastshop.util.StoreOutProductInfo;
 import com.coastshop.vo.Product;
 import com.coastshop.vo.Shop;
@@ -236,8 +237,11 @@ public class AjaxServlet extends HttpServlet {
             if (keyword == null) {
                 keyword = "";
             }
-            keyword = keyword.substring(0, 9);
-
+            if (keyword.matches(ProductUtil.BARCODEREGEX2017)) {
+                keyword = keyword.substring(0, 12);
+            } else {
+                keyword = keyword.substring(0, 9);
+            }
             Product product = ServiceFactory.getProductServiceInstance().find(keyword);
             if (product != null) {
                 price = product.getPrice();

@@ -186,7 +186,9 @@ public class StoreOutServiceImpl implements IStoreOutService {
                     StoreOut so = iter.next();
                     //storeout.id
                     //price
-                    int price = productDAO.getBySn(so.getSn()).getPrice();
+                    String sn = so.getSn();
+                    Product product = productDAO.getBySn(sn);
+                    int price = product.getPrice();
                     //amout
                     int amount = so.getAmount();
                     StoreOutProductInfo pinfo = StoreOutProductUtil.getStoreOutProductInfo(so.getId(), so.getSn(), so.getColor(), so.getSize(), price, amount, brand);

@@ -56,7 +56,10 @@
                                     $("#mp3")[0].play();
                                     alert("没查到此款价格");
                                     //设置dialog里的sn
-                                    if (sno.length === 15) {
+                                    if (is2017(sno)) {
+                                        $("#sn").val(sno.substring(0, 12));
+                                        $("#snlable").text(sno.substring(0, 12));
+                                    } else {
                                         $("#sn").val(sno.substring(0, 9));
                                         $("#snlable").text(sno.substring(0, 9));
                                     }
@@ -85,10 +88,17 @@
                     }
                 });
 
+
                 //验证
                 function validate(sno) {
                     //需要servlet获取验证码写到此处
                     var regex = /<%= ProductUtil.BARCODEREGEX%>/;
+                    return regex.test(sno);
+                }
+
+                //是否是2017款号
+                function is2017(sno) {
+                    var regex = /<%= ProductUtil.BARCODEREGEX2017%>/;
                     return regex.test(sno);
                 }
 
