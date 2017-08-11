@@ -1074,7 +1074,7 @@ public class ProductUtil {
                     firstColorInfo = "黑";
                     break;
                 default:
-                    firstColorInfo = "#";
+                    firstColorInfo = "";
                     break;
             }
             switch (secontColorNumber) {
@@ -1106,10 +1106,15 @@ public class ProductUtil {
                     secondColorInfo = "黑";
                     break;
                 default:
-                    secondColorInfo = "#";
+                    secondColorInfo = "";
                     break;
             }
-            padColorInfo = firstColorInfo+secondColorInfo;
+            if (firstColorInfo.equals(secondColorInfo)) {
+                padColorInfo = secondColorInfo;
+            }else{
+                padColorInfo = firstColorInfo + secondColorInfo;
+            }
+
         } else {
             padColorInfo = color;
         }
